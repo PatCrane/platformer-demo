@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://de511lctgq1n0"]
+
+[ext_resource type="Script" uid="uid://evoldr6ws55l" path="res://scenes/entities/player.gd" id="1_ucweq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0qees"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_ucweq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_0qees")
