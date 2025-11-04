@@ -6,6 +6,15 @@
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ucweq")
+jump_strength = 400
+gravity = 1000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_0qees")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="ReloadTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
