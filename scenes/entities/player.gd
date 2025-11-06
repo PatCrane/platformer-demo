@@ -24,6 +24,9 @@ func get_input():
 	if Input.is_action_just_pressed("shoot") and $ReloadTimer.time_left == 0:
 		shoot.emit(position, get_local_mouse_position().normalized())
 		$ReloadTimer.start()
+		var tween = get_tree().create_tween()
+		tween.tween_property($Marker, "scale", Vector2(0.1,0.1), 0.2)
+		tween.tween_property($Marker, "scale", Vector2(0.5,0.5), 0.4)
 
 func apply_gravity(delta):
 	velocity.y += gravity * delta
@@ -34,6 +37,7 @@ func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
 	move_and_slide()
 	animation()
+	update_marker()
 	
 func animation():
 	$Legs.flip_h = direction_x < 0
@@ -44,5 +48,8 @@ func animation():
 	var raw_dir = get_local_mouse_position().normalized()
 	var adjusted_dir = Vector2i(round(raw_dir.x),round(raw_dir.y))
 	$Torso.frame = gun_directions[adjusted_dir]
+	
+func update_marker():
+	$Marker.position = get_local_mouse_position().normalized() * 40
 	
 		
