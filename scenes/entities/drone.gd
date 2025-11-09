@@ -33,4 +33,10 @@ func explode():
 	$ExplosionSPrite.show()
 	$AnimationPlayer.play("explode")
 	await $AnimationPlayer.animation_finished
+	
 	queue_free()	
+	
+func chain_reaction():
+	for drone in get_tree().get_nodes_in_group('Drones'):
+		if position.distance_to(drone.position) < 20:
+			drone.explode()

@@ -2760,7 +2760,10 @@ position = Vector2(-3, 4)
 position = Vector2(197, 130)
 
 [node name="Drone" parent="Entities" instance=ExtResource("5_urvlt")]
-position = Vector2(544, 141)
+position = Vector2(323, 124)
+
+[node name="Drone2" parent="Entities" instance=ExtResource("5_urvlt")]
+position = Vector2(290, 132)
 
 [node name="Bullets" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
