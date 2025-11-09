@@ -2760,12 +2760,16 @@ position = Vector2(-3, 4)
 position = Vector2(197, 130)
 
 [node name="Drone" parent="Entities" instance=ExtResource("5_urvlt")]
-position = Vector2(323, 124)
-
-[node name="Drone2" parent="Entities" instance=ExtResource("5_urvlt")]
-position = Vector2(290, 132)
+position = Vector2(836, 112)
 
 [node name="Bullets" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.4700755, 0.47007596, 0.47007585, 1)
+blend_mode = 2
+shadow_enabled = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
 
 [connection signal="shoot" from="Entities/Player" to="." method="_on_player_shoot"]

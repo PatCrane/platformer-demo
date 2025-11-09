@@ -1,8 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://ceq3js6nus7h6"]
+[gd_scene load_steps=18 format=3 uid="uid://ceq3js6nus7h6"]
 
 [ext_resource type="Texture2D" uid="uid://vyr0ks75oxum" path="res://graphics/characters/drone.png" id="1_gs6nb"]
 [ext_resource type="Script" uid="uid://bha18ia15w6jl" path="res://scenes/entities/drone.gd" id="1_n87ok"]
+[ext_resource type="Shader" uid="uid://cb4kjaxtx42im" path="res://scenes/entities/drone.tres" id="2_0tq5o"]
 [ext_resource type="Texture2D" uid="uid://bav7n447bnsa5" path="res://graphics/fire/explosion.png" id="3_xcp44"]
+[ext_resource type="AudioStream" uid="uid://dtnqyh7corvdx" path="res://audio/explosion.wav" id="5_6vf5s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6vf5s"]
+resource_local_to_scene = true
+shader = ExtResource("2_0tq5o")
+shader_parameter/Color = Color(1, 1, 1, 1)
+shader_parameter/Progress = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n87ok"]
 atlas = ExtResource("1_gs6nb")
@@ -105,6 +113,7 @@ collision_mask = 11
 script = ExtResource("1_n87ok")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_6vf5s")
 sprite_frames = SubResource("SpriteFrames_in55t")
 autoplay = "default"
 frame = 1
@@ -137,6 +146,9 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
 shape = SubResource("CircleShape2D_h0gm0")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_6vf5s")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

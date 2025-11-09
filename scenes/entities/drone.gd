@@ -25,13 +25,15 @@ func _on_collision_area_body_entered(_body: Node2D) -> void:
 func hit():
 	health -= 1
 	if health <= 0:
-		explode()	
+		explode()
+	$AnimatedSprite2D.material.set_shader_parameter('Progress', 0.0)
 
 func explode():
 	speed = 0
 	$AnimatedSprite2D.hide()
 	$ExplosionSPrite.show()
 	$AnimationPlayer.play("explode")
+	$AudioStreamPlayer2D.play()
 	await $AnimationPlayer.animation_finished
 	
 	queue_free()	
